@@ -1,6 +1,6 @@
 import './style.css'
 
-const API_BASE_URL = 'https://api.joolnode.com/api';
+const API_BASE_URL = '/api';
 
 async function fetchAndRenderSiteConfig() {
   try {
