@@ -61,8 +61,9 @@ async function fetchAndRenderTools() {
     const response = await fetch(`${API_BASE_URL}/tools`);
     const tools = await response.json();
 
-    // 메인 페이지에는 상위 3개 도구만 고정 표시
-    const activeTools = tools.slice(0, 3);
+    // 모바일/태블릿(992px 이하)에서는 1개만, PC에서는 3개 표시
+    const limit = window.innerWidth <= 992 ? 1 : 3;
+    const activeTools = tools.slice(0, limit);
 
     let html = activeTools.map((tool, index) => {
       const isActive = tool.status === 'active';
@@ -135,7 +136,10 @@ async function fetchAndRenderBlog() {
     const blogList = document.getElementById('blog-list');
     if (!blogList) return;
 
-    blogList.innerHTML = blogPosts.slice(0, 3).map((post, index) => {
+    // 모바일/태블릿(992px 이하)에서는 1개만, PC에서는 3개 표시
+    const limit = window.innerWidth <= 992 ? 1 : 3;
+
+    blogList.innerHTML = blogPosts.slice(0, limit).map((post, index) => {
       const slug = post.slug || post.id;
       
       // 난이도 및 카테고리 한글 변환 매핑

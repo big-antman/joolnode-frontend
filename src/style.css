@@ -898,16 +898,18 @@ footer {
 @media (max-width: 768px) {
   .header-content {
     flex-direction: column;
-    gap: 16px;
+    gap: 12px;
     padding: 10px 0;
   }
 
   .main-nav ul {
-    gap: 24px;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   .main-nav a {
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
 
   .hero {
@@ -1335,9 +1337,12 @@ footer {
     align-items: center;
   }
   
-  .mission-image {
-    order: -1;
-    min-height: 300px;
+  .mission-image, .mission-image img, .mission-wrapper .mission-image {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    min-height: 0 !important;
   }
 }
 
@@ -1347,6 +1352,23 @@ footer {
 }
 
 @media (max-width: 768px) {
+  /* Hide the maker story laptop image robustly on mobile and tablet */
+  .mission-image, .mission-image img, .mission-wrapper .mission-image {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Robust Card Limit: Show only 1 card on mobile/tablet (Redundant with JS for safety) */
+  #blog-list > *:nth-child(n+2),
+  #tool-list > *:nth-child(n+2) {
+    display: none !important;
+  }
+
   /* 1. Header Slogan Break Points */
   .mobile-br {
     display: block;
@@ -1379,14 +1401,11 @@ footer {
     align-items: center;
   }
 
-  /* 3. Blog List: Only 1 item + Vertical Stack */
-  #blog-list .blog-card:nth-child(n+2) {
-    display: none;
-  }
-
+  /* 3. Blog List: Vertical Stack & Full Width */
   .blog-card {
     height: auto;
     min-height: 380px;
+    width: 100% !important;
   }
 
   .blog-card-inner {
@@ -1396,7 +1415,7 @@ footer {
 
   .blog-thumb {
     width: 100%;
-    height: 320px;
+    height: 200px;
     border-right: none;
     border-bottom: 1px solid var(--border-glass);
   }
@@ -1407,27 +1426,23 @@ footer {
   }
 
   .blog-title {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     flex-wrap: wrap;
   }
 
-  /* 4. Tool List: Only 1 item + Full-bleed Image */
-  #tool-list .tool-card:nth-child(n+2) {
-    display: none;
-  }
-
+  /* 4. Tool List: Vertical Stack & Single Card Visibility handled above */
   .tool-card {
     height: auto;
+    width: 100% !important;
   }
 
   .tool-card-inner {
     flex-direction: column;
   }
 
-  /* Specificity: .tool-card .tool-icon (0,2,0) > .tool-icon (0,1,0) */
   .tool-card .tool-icon {
     width: 100%;
-    height: 320px;
+    height: 200px;
     display: block;
     margin: 0;
     padding: 0;
@@ -1442,6 +1457,6 @@ footer {
 
   /* Section padding optimization for mobile */
   .section, #learn, #download, #capability {
-    padding: 60px 0;
+    padding: 80px 0 60px;
   }
 }
