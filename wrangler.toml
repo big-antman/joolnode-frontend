@@ -1,0 +1,7 @@
+name = "joolnode"
+pages_build_output_dir = "dist"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "joolnode-db"
+database_id = "cd96d39d-e42a-44e8-8120-6fe6ab80aaa1"

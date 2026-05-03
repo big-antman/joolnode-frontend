@@ -1,0 +1,4 @@
+# Cloudflare Pages 헤더 설정
+# Vite 빌드 후 public/ 디렉토리의 파일이 dist/로 복사됩니다.
+/api/*
+  Access-Control-Allow-Origin: *
