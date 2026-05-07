@@ -1,0 +1,522 @@
+/* 문의하기 페이지 스타일 - 3D 벤토 레이아웃 반영 */
+.container {
+  width: 100%;
+}
+
+.innerContainer {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.heroSection {
+  padding: 120px 0 60px;
+  background: radial-gradient(
+    ellipse at 50% 0%,
+    rgba(0, 166, 81, 0.08) 0%,
+    transparent 70%
+  );
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.heroIllustration {
+  width: 280px;
+  height: auto;
+  filter: drop-shadow(0 20px 40px rgba(0, 166, 81, 0.15));
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 4rem;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  background: linear-gradient(to bottom, #1a1a1a, #4a4a4a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  line-height: 1.3;
+  max-width: 800px;
+  margin: 0 auto;
+  word-break: keep-all;
+}
+
+/* ===== Main Form Section ===== */
+.mainSection {
+  padding: 80px 0;
+  background-color: #ffffff;
+}
+
+.formCard {
+  background: white;
+  border-radius: 40px;
+  padding: 4rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.label {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  padding-left: 0.5rem;
+}
+
+.required {
+  color: #ff4d4d;
+  margin-left: 0.2rem;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  padding: 1.25rem 1.5rem;
+  border: 2px solid #f0f0f0;
+  border-radius: 20px;
+  font-size: 1.1rem;
+  color: var(--text-dark);
+  background: #f8f9fa;
+  transition: all 0.3s ease;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.input:focus,
+.textarea:focus {
+  border-color: var(--primary-color);
+  background: white;
+  box-shadow: 0 0 0 4px rgba(0, 166, 81, 0.1);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 180px;
+}
+
+.submitButton {
+  width: 100%;
+  padding: 1.5rem;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 1.25rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  margin-top: 1rem;
+  box-shadow: 0 10px 30px rgba(0, 166, 81, 0.2);
+}
+
+.submitButton:hover:not(:disabled) {
+  background: var(--primary-dark);
+  transform: translateY(-4px);
+  box-shadow: 0 15px 40px rgba(0, 166, 81, 0.3);
+}
+
+.submitButton:disabled {
+  background: #e0e0e0;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.privacyNote {
+  font-size: 0.9rem;
+  color: #999;
+  text-align: center;
+  margin-top: 1rem;
+  word-break: keep-all;
+}
+
+/* ===== Donation Section (New Layout) ===== */
+.donationSection {
+  padding: 80px 0 120px;
+  background-color: #ffffff;
+}
+
+.donationHeader {
+  max-width: 600px;
+  margin: 0 auto 2.5rem;
+  text-align: left;
+}
+
+.donationTitle {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.04em;
+}
+
+.donationSubtitles {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.donationSubtitles p {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #555;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid #eee;
+  margin: 2rem 0;
+  width: 100%;
+}
+
+.donationContent {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* 혜택 안내 카드 */
+.benefitCard {
+  background-color: #f8f8f2;
+  border-radius: 24px;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.benefitTag {
+  font-size: 0.95rem;
+  color: #999;
+  font-weight: 700;
+}
+
+.benefitText {
+  font-size: 1.2rem;
+  color: #444;
+  line-height: 1.6;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* 후원 액션 영역 (QR 코드 포함) */
+.donationActionsWrapper {
+  display: flex;
+  gap: 20px;
+  align-items: stretch;
+  width: 100%;
+}
+
+.actionCards {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+  position: relative;
+}
+
+.qrContainer {
+  flex: 0 0 180px;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 20px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  animation: slideInRight 0.3s ease-out;
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(10px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.qrImage {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.qrNote {
+  font-size: 0.75rem;
+  color: #64748b;
+  text-align: center;
+  margin: 0;
+}
+
+.actionCard {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 20px;
+  padding: 1.2rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  width: 100%;
+  text-align: left;
+}
+
+.actionCard:hover, .actionCard.active {
+  border-color: #3182f6;
+  background-color: #f9fcff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(49, 130, 246, 0.1);
+}
+
+.actionCard.active {
+  box-shadow: 0 0 0 2px rgba(49, 130, 246, 0.2);
+}
+
+.actionIcon {
+  width: 54px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.tossIcon, .bankIcon {
+  width: 100%;
+  height: 100%;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 900;
+  font-size: 1.4rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.tossIcon {
+  background: #3182f6;
+  font-family: 'Outfit', sans-serif;
+}
+
+.bankIcon {
+  background: #00a651;
+  font-size: 0.85rem;
+  letter-spacing: -0.05em;
+}
+
+.actionInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  flex-grow: 1;
+}
+
+.actionMain {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #1a1a1a;
+}
+
+.actionSub {
+  font-size: 0.95rem;
+  color: #888;
+  font-weight: 600;
+}
+
+.arrowIcon {
+  font-size: 1.8rem;
+  color: #ccc;
+  font-weight: 300;
+}
+
+/* 하단 가이드 */
+.bottomGuide {
+  background-color: #f8f8f2;
+  padding: 1.5rem 2.5rem;
+  border-left: 4px solid #d4d4cc;
+  margin-top: 1rem;
+}
+
+.bottomGuide p {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.6;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Contextual Toast */
+.contextToast {
+  position: absolute;
+  bottom: -4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  padding: 0.7rem 1.4rem;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  animation: contextSlideDown 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+@keyframes contextSlideDown {
+  from { transform: translate(-50%, 10px); opacity: 0; }
+  to { transform: translate(-50%, 0); opacity: 1; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .heroSection {
+    padding: 100px 0 40px;
+  }
+
+  .title {
+    font-size: 2.8rem;
+    line-height: 1.2;
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
+    padding: 0 1rem;
+  }
+
+  .heroIllustration {
+    width: 200px;
+  }
+
+  .mainSection {
+    padding: 40px 0;
+  }
+
+  .formCard {
+    padding: 2.5rem 1.5rem;
+    border-radius: 32px;
+  }
+
+  .label {
+    font-size: 1.2rem; /* 시니어 가독성 강화 */
+  }
+
+  .input, .textarea {
+    font-size: 1.15rem; /* 터치 시 줌 방지 및 가독성 (최소 16px 이상) */
+    padding: 1.1rem;
+    border-radius: 16px;
+  }
+
+  .submitButton {
+    padding: 1.3rem;
+    font-size: 1.2rem;
+    border-radius: 16px;
+  }
+
+  .donationSection {
+    padding: 60px 0 100px;
+  }
+
+  .donationHeader, .donationContent {
+    padding: 0 1rem;
+  }
+  
+  .donationTitle {
+    font-size: 2.4rem;
+    margin-bottom: 1rem;
+  }
+  
+  .donationSubtitles p {
+    font-size: 1.15rem;
+    font-weight: 700;
+  }
+
+  .benefitCard {
+    padding: 1.5rem;
+    border-radius: 20px;
+  }
+
+  .benefitText {
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+
+  .actionCard {
+    padding: 1rem;
+    border-radius: 16px;
+  }
+
+  .actionIcon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .actionMain {
+    font-size: 1.15rem;
+  }
+
+  .actionSub {
+    font-size: 0.9rem;
+  }
+
+  .bottomGuide {
+    padding: 1.2rem 1.5rem;
+    border-radius: 12px;
+  }
+
+  .bottomGuide p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 2.4rem;
+  }
+  
+  .heroIllustration {
+    width: 160px;
+  }
+}

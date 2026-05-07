@@ -1,0 +1,27 @@
+# Render 배포 설정 — JOOLnode Express API
+# https://render.com/docs/infrastructure-as-code
+
+services:
+  - type: web
+    name: joolnode-api
+    env: node
+    region: singapore  # 아시아 지역 (한국과 가까움)
+    plan: free
+    buildCommand: npm install
+    startCommand: node server.js
+    healthCheckPath: /health
+    envVars:
+      - key: PORT
+        value: 4000
+      - key: R2_ENDPOINT
+        sync: false  # Render Dashboard에서 설정 필요
+      - key: R2_ACCESS_KEY_ID
+        sync: false
+      - key: R2_SECRET_ACCESS_KEY
+        sync: false
+      - key: R2_BUCKET_NAME
+        value: joolnode
+      - key: R2_PUBLIC_URL
+        sync: false  # cdn.example.com (Cloudflare DNS 설정 후)
+      - key: NODE_VERSION
+        value: 20

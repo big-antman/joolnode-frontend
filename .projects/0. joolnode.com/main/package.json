@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "better-sqlite3": "^12.9.0",
+    "cors": "^2.8.6",
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "vite": "^5.4.21"
+  },
+  "scripts": {
+    "dev:backend": "cd backend && node server.js",
+    "dev:blog": "cd main/blog && npm run dev"
+  }
+}

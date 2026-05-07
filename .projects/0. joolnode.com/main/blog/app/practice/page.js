@@ -14,6 +14,8 @@ export default function PracticePage() {
   const [tools, setTools] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [toastVisible, setToastVisible] = useState(false);
+  const toastTimerRef = useState(null);
 
   useEffect(() => {
     const fetchTools = async () => {
@@ -43,12 +45,10 @@ export default function PracticePage() {
     fetchTools();
   }, []);
 
-  const handleDownload = (tool) => {
-    if (tool.status === 'active' && tool.link && tool.link !== '#') {
-      window.location.href = tool.link;
-    } else {
-      alert('준비 중인 도구입니다.');
-    }
+  const handleDownload = () => {
+    setToastVisible(true);
+    if (toastTimerRef[0]) clearTimeout(toastTimerRef[0]);
+    toastTimerRef[0] = setTimeout(() => setToastVisible(false), 3500);
   };
 
   if (loading) return (
@@ -93,8 +93,14 @@ export default function PracticePage() {
             {tools.map((tool, index) => {
               const isActive = tool.status === 'active';
               
-              // 플레이스홀더 이미지 처리 (1, 2번 교차)
-              const toolIconSrc = isActive ? (tool.icon || '/placeholder-1.png') : `/placeholder-${(index % 2) + 1}.png`;
+              // 메인 페이지와 동일한 아이콘 로직
+              let toolIconSrc;
+              if (isActive) {
+                toolIconSrc = tool.icon || '/placeholder-1.png';
+              } else {
+                const placeholderNum = (index % 2) + 1;
+                toolIconSrc = `/placeholder-${placeholderNum}.png`;
+              }
               
               return (
                 <article key={tool.id} className={`${styles.toolCard} ${!isActive ? styles.disabled : ''}`}>
@@ -102,32 +108,39 @@ export default function PracticePage() {
                     <img src={toolIconSrc} alt={tool.name} className={styles.toolIconImg} />
                   </div>
                   <div className={styles.toolBody}>
-                    <h2 className={styles.toolName}>{tool.name}</h2>
-                    <p 
-                      className={styles.toolDescription}
-                      dangerouslySetInnerHTML={{ __html: tool.description }}
-                    />
-                    
-                    {isActive && tool.features && tool.features.length > 0 && (
-                      <div className={styles.featureList}>
-                        <h3 className={styles.featureTitle}>주요 기능</h3>
-                        <ul>
-                          {tool.features.map((feature, i) => (
-                            <li key={i}>{feature}</li>
-                          ))}
-                        </ul>
+                    {isActive ? (
+                      <>
+                        <h2 className={styles.toolName}>{tool.name}</h2>
+                        <p 
+                          className={styles.toolDescription}
+                          dangerouslySetInnerHTML={{ __html: tool.description }}
+                        />
+                        
+                        {tool.features && tool.features.length > 0 && (
+                          <div className={styles.featureList}>
+                            <h3 className={styles.featureTitle}>주요 기능</h3>
+                            <ul>
+                              {tool.features.map((feature, i) => (
+                                <li key={i}>{feature}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                        
+                        <div className={styles.toolFooter}>
+                          <button
+                            className={styles.downloadBtn}
+                            onClick={() => handleDownload()}
+                          >
+                            다운로드
+                          </button>
+                        </div>
+                      </>
+                    ) : (
+                      <div className={styles.placeholderContent}>
+                        <span className={styles.placeholderText}>준비 중</span>
                       </div>
                     )}
-                    
-                    <div className={styles.toolFooter}>
-                      <button
-                        className={`${styles.downloadBtn} ${!isActive ? styles.disabledBtn : ''}`}
-                        disabled={!isActive}
-                        onClick={() => handleDownload(tool)}
-                      >
-                        {isActive ? '다운로드' : '준비 중'}
-                      </button>
-                    </div>
                   </div>
                 </article>
               );
@@ -223,6 +236,13 @@ export default function PracticePage() {
           </div>
         </div>
       </section>
+
+      {/* 다운로드 토스트 */}
+      {toastVisible && (
+        <div className={styles.downloadToast}>
+          이 도구는 14장 오픈소스 활용하기 편에서 무료로 제공됩니다.
+        </div>
+      )}
     </div>
   );
 }

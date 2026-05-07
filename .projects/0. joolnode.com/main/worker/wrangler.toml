@@ -1,0 +1,8 @@
+name = "joolnode-api"
+main = "src/index.js"
+compatibility_date = "2026-04-28"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "joolnode-db"
+database_id = "cd96d39d-e42a-44e8-8120-6fe6ab80aaa1"
